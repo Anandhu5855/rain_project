@@ -1,13 +1,13 @@
 services:
   - type: web
-    name: rain-project
-    env: python
-    buildCommand: ""
-    startCommand: gunicorn rain_project.wsgi:application
+    name: rain_project
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn rain_project.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: rain_project.settings
-      - key: SECRET_KEY
-        value: your-actual-secret-key
-      - key: ALLOWED_HOSTS
-        value: .onrender.com
+      - key: PYTHON_VERSION
+        value: 3.11
+    plan: free
+    region: oregon
