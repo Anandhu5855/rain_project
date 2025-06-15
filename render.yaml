@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: rain-project
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn rain_project.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: rain_project.settings
+      - key: SECRET_KEY
+        value: your-actual-secret-key
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
